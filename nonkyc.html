@@ -1,0 +1,849 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>nonkyc API documentation</title>
+<meta name="description" content="The module for accessing NonKYC API written in asynchronous python" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>nonkyc</code></h1>
+</header>
+<section id="section-intro">
+<p>The module for accessing NonKYC API written in asynchronous python</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="nonkyc.pop_none"><code class="name flex">
+<span>def <span class="ident">pop_none</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A helper function that removes parameters with a None value</p></div>
+</dd>
+<dt id="nonkyc.private"><code class="name flex">
+<span>def <span class="ident">private</span></span>(<span>func)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Decorator for declaring functions that require API keys.</p>
+<p>A decorated function will throw an assertion error if API keys aren't placed in <code>nonkyc_settings.json</code> file.</p></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="nonkyc.Auth"><code class="flex name class">
+<span>class <span class="ident">Auth</span></span>
+<span>(</span><span>access_key: str, secret_key: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Authentication class that produces headers for api and login message for websocket.</p></div>
+<h3>Methods</h3>
+<dl>
+<dt id="nonkyc.Auth.headers"><code class="name flex">
+<span>def <span class="ident">headers</span></span>(<span>self, payload: str) ‑> dict</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates auth headers for rest API.</p></div>
+</dd>
+<dt id="nonkyc.Auth.sign"><code class="name flex">
+<span>def <span class="ident">sign</span></span>(<span>self, payload: str) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Produces signature for an arbitrary string.</p></div>
+</dd>
+<dt id="nonkyc.Auth.ws_auth_message"><code class="name flex">
+<span>def <span class="ident">ws_auth_message</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a login string for websocket.</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="nonkyc.WSException"><code class="flex name class">
+<span>class <span class="ident">WSException</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Common base class for all non-exit exceptions.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="nonkyc.WSListenerContext"><code class="flex name class">
+<span>class <span class="ident">WSListenerContext</span></span>
+<span>(</span><span>ws, listener_function)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Websocket listener context class, wraps the asyncio websocket context by adding a listener and removes it afterwards.</p></div>
+</dd>
+<dt id="nonkyc.NonKYCClient"><code class="flex name class">
+<span>class <span class="ident">NonKYCClient</span></span>
+<span>(</span><span>settings_file='nonkyc_settings.json')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>The class that for accessing NonKYC exchange API.</p></div>
+<h3>Methods</h3>
+<dl>
+<dt id="nonkyc.NonKYCClient.cancel_market_orders"><code class="name flex">
+<span>async def <span class="ident">cancel_market_orders</span></span>(<span>self, symbol: str, side: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Cancel a batch of open orders in a spot market.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>symbol</code></strong></dt>
+<dd>Market symbol, two tickers joined with a "_". For example "XRG_LTC".</dd>
+<dt><strong><code>side</code></strong></dt>
+<dd>"sell", "buy" or "all".</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.cancel_order"><code class="name flex">
+<span>async def <span class="ident">cancel_order</span></span>(<span>self, order_id: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Cancel an open spot trade order.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>order_id</code></strong></dt>
+<dd>Order ID to cancel</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.close"><code class="name flex">
+<span>async def <span class="ident">close</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.combine_streams"><code class="name flex">
+<span>async def <span class="ident">combine_streams</span></span>(<span>self, stream_list: List[~T])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Lets you iterate over multiple streams at once as the messages come.</p>
+<p>Create a list of trade streams, <code>xrg_trades_stream = [self.subscribe_trades_generator(ws, 'XRG/USDT'), self.subscribe_trades_generator(ws, 'XRG/LTC')]</code> and listen to trades from both market at once <code>async for msg in combine_streams(xrg_trades_stream): ...</code></p></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.create_order"><code class="name flex">
+<span>async def <span class="ident">create_order</span></span>(<span>self, symbol: str, side: str, quantity: str, price: Optional[str] = None, order_type: Optional[str] = None, user_provided_id: Optional[str] = None, strict_validate: Optional[str] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates an order.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>symbol</code></strong></dt>
+<dd>Market symbol, two tickers joined with a "_". For example "XRG_LTC".</dd>
+<dt><strong><code>side</code></strong></dt>
+<dd>Order side, "sell" or "buy".</dd>
+<dt><strong><code>quantity</code></strong></dt>
+<dd>Quantity of the base asset.</dd>
+<dt><strong><code>price</code></strong></dt>
+<dd>Price in terms of the quote asset required for the limit order.</dd>
+<dt><strong><code>order_type</code></strong></dt>
+<dd>"limit" or "market" ordeer type.</dd>
+<dt><strong><code>user_provided_id</code></strong></dt>
+<dd>Optional user-defined ID.</dd>
+<dt><strong><code>strict_validate</code></strong></dt>
+<dd>Strict validate amount and price precision without truncation. Setting true will return an error if your quantity/price exceeds the correct decimal places. Default false will truncate values to allowed number of decimal places.</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.create_withdrawal"><code class="name flex">
+<span>async def <span class="ident">create_withdrawal</span></span>(<span>self, ticker: str, quantity: str, address: str, payment_id: Optional[str] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Make a new withdrawal request.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ticker</code></strong></dt>
+<dd>Currency symbol, for example "XRG".</dd>
+<dt><strong><code>quantity</code></strong></dt>
+<dd>Quantity to withdraw.</dd>
+<dt><strong><code>address</code></strong></dt>
+<dd>Address to withdraw to. Must be a validated address on your account.</dd>
+<dt><strong><code>paymentid</code></strong></dt>
+<dd>If required, provide payment id.</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.get"><code class="name flex">
+<span>async def <span class="ident">get</span></span>(<span>self, path: str, params: dict = {})</span>
+</code></dt>
+<dd>
+<div class="desc"><p>The basic GET query, inserts authorization header.</p></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.get_asset_by_id"><code class="name flex">
+<span>async def <span class="ident">get_asset_by_id</span></span>(<span>self, ticker: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get asset by ticker.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ticker</code></strong></dt>
+<dd>Currency symbol, for example "XRG".</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.get_assets"><code class="name flex">
+<span>async def <span class="ident">get_assets</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get a list of assets.</p></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.get_balances"><code class="name flex">
+<span>async def <span class="ident">get_balances</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get detailed acccount balance information.</p></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.get_deposit_address"><code class="name flex">
+<span>async def <span class="ident">get_deposit_address</span></span>(<span>self, ticker: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get your deposit address.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ticker</code></strong></dt>
+<dd>Currency symbol, for example "XRG".</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.get_deposits"><code class="name flex">
+<span>async def <span class="ident">get_deposits</span></span>(<span>self, limit: int, skip: int, ticker: Optional[str] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get a list of your account deposits.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ticker</code></strong></dt>
+<dd>Currency symbol, for example "XRG"(Optional).</dd>
+<dt><strong><code>limit</code></strong></dt>
+<dd>Maximum limit is 500.</dd>
+<dt><strong><code>skip</code></strong></dt>
+<dd>Skip this many records.</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.get_market_by_id"><code class="name flex">
+<span>async def <span class="ident">get_market_by_id</span></span>(<span>self, market_id: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get market by market id.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>market_id</code></strong></dt>
+<dd>Exchange internal market ID.</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.get_market_by_symbol"><code class="name flex">
+<span>async def <span class="ident">get_market_by_symbol</span></span>(<span>self, symbol: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get market by symbol.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>symbol</code></strong></dt>
+<dd>Market symbol, two tickers joined with a "_". For example "XRG_LTC".</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.get_markets"><code class="name flex">
+<span>async def <span class="ident">get_markets</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get list of markets</p></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.get_my_orders"><code class="name flex">
+<span>async def <span class="ident">get_my_orders</span></span>(<span>self, status: str, limit: int, skip: int, symbol: Optional[str] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get a list of your orders. Ordered by created timestamp descending.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>status</code></strong></dt>
+<dd>Current status of orders. 'active', 'filled', or 'cancelled'.</dd>
+<dt><strong><code>limit</code></strong></dt>
+<dd>Maximum limit is 500.</dd>
+<dt><strong><code>skip</code></strong></dt>
+<dd>Skip this many records.</dd>
+<dt><strong><code>symbol</code></strong></dt>
+<dd>Market symbol, two tickers joined with a "_". For example "XRG_LTC".</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.get_nonzero_balances"><code class="name flex">
+<span>async def <span class="ident">get_nonzero_balances</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get account balance information if balance is nonzero.</p></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.get_order"><code class="name flex">
+<span>async def <span class="ident">get_order</span></span>(<span>self, order_id: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get an order by id.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>order_id</code></strong></dt>
+<dd>NonKYC orderId or userProvidedId</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.get_orderbook_by_market_id"><code class="name flex">
+<span>async def <span class="ident">get_orderbook_by_market_id</span></span>(<span>market_id: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get market orderbook by market id.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>market_id</code></strong></dt>
+<dd>Exchange internal market ID.</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.get_orderbook_by_symbol"><code class="name flex">
+<span>async def <span class="ident">get_orderbook_by_symbol</span></span>(<span>symbol: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get market orderbook by symbol.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>symbol</code></strong></dt>
+<dd>Market symbol, two tickers joined with a "_". For example "XRG_LTC".</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.get_pool_by_id"><code class="name flex">
+<span>async def <span class="ident">get_pool_by_id</span></span>(<span>pool_id: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get pool by pool id.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>pool_id</code></strong></dt>
+<dd>Exchange internal market ID.</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.get_pool_by_symbol"><code class="name flex">
+<span>async def <span class="ident">get_pool_by_symbol</span></span>(<span>pool_symbol: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get pool by symbol.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>symbol</code></strong></dt>
+<dd>Market symbol, two tickers joined with a "_". For example "XRG_LTC".</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.get_pool_trades"><code class="name flex">
+<span>async def <span class="ident">get_pool_trades</span></span>(<span>self, limit: int, skip: int, symbol: Optional[str] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get a list of your pool trades.</p>
+<p>Get a list of your pool trades. Ordered by created timestamp descending</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>limit</code></strong></dt>
+<dd>Maximum limit is 500.</dd>
+<dt><strong><code>skip</code></strong></dt>
+<dd>Skip this many records.</dd>
+<dt><strong><code>symbol</code></strong></dt>
+<dd>Market symbol, two tickers joined with a "_". For example "XRG_LTC".</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.get_pool_trades_since"><code class="name flex">
+<span>async def <span class="ident">get_pool_trades_since</span></span>(<span>self, since: str, limit: int, skip: int, symbol: Optional[str] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get a list of your pool trades since a timestamp in millisec.</p>
+<p>Get a list of your pool trades. Ordered by created timestamp ASCENDING</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>since</code></strong></dt>
+<dd>A timestamp in milliseconds you want to retreive records after</dd>
+<dt><strong><code>limit</code></strong></dt>
+<dd>Maximum limit is 500.</dd>
+<dt><strong><code>skip</code></strong></dt>
+<dd>Skip this many records.</dd>
+<dt><strong><code>symbol</code></strong></dt>
+<dd>Market symbol, two tickers joined with a "_". For example "XRG_LTC".</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.get_pools"><code class="name flex">
+<span>async def <span class="ident">get_pools</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get list of liquidity pools</p></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.get_trades"><code class="name flex">
+<span>async def <span class="ident">get_trades</span></span>(<span>self, limit: int, skip: int, symbol: Optional[str] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get a list of your spot market trades.</p>
+<p>Get a list of your market trades. Ordered by created timestamp descending</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>limit</code></strong></dt>
+<dd>Maximum limit is 500.</dd>
+<dt><strong><code>skip</code></strong></dt>
+<dd>Skip this many records.</dd>
+<dt><strong><code>symbol</code></strong></dt>
+<dd>Market symbol, two tickers joined with a "_". For example "XRG_LTC".</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.get_trades_since"><code class="name flex">
+<span>async def <span class="ident">get_trades_since</span></span>(<span>self, since: str, limit: int, skip: int, symbol: Optional[str] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get a list of your spot trades since a timestamp in millisec.</p>
+<p>Get a list of your trades. Ordered by created timestamp ASCENDING</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>since</code></strong></dt>
+<dd>A timestamp in milliseconds you want to retreive records after</dd>
+<dt><strong><code>limit</code></strong></dt>
+<dd>Maximum limit is 500.</dd>
+<dt><strong><code>skip</code></strong></dt>
+<dd>Skip this many records.</dd>
+<dt><strong><code>symbol</code></strong></dt>
+<dd>Market symbol, two tickers joined with a "_". For example "XRG_LTC".</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.get_withdrawals"><code class="name flex">
+<span>async def <span class="ident">get_withdrawals</span></span>(<span>self, limit: int, skip: int, ticker: Optional[str] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get a list of your account withdrawals. Ordered by created timestamp descending.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ticker</code></strong></dt>
+<dd>Currency symbol, for example "XRG"(Optional).</dd>
+<dt><strong><code>limit</code></strong></dt>
+<dd>Maximum limit is 500.</dd>
+<dt><strong><code>skip</code></strong></dt>
+<dd>Skip this many records.</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.post"><code class="name flex">
+<span>async def <span class="ident">post</span></span>(<span>self, path: str, data: dict)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>The basic POST query, inserts authorization header</p></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.subscribe_candles_generator"><code class="name flex">
+<span>def <span class="ident">subscribe_candles_generator</span></span>(<span>self, ws: aiohttp.client_ws.ClientWebSocketResponse, symbol: str, period: int, limit: Optional[int] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a candles stream subscribtion in a form of a generator.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ws</code></strong></dt>
+<dd>Websocket response object.</dd>
+<dt><strong><code>symbol</code></strong></dt>
+<dd>Market symbol, two tickers joined with a "/". For example "XRG/LTC".</dd>
+<dt><strong><code>period</code></strong></dt>
+<dd>The candlestick period you would like (Minutes). (5, 15, 30, 60, 180, 240, 480, 720, 1440)</dd>
+<dt><strong><code>limit</code></strong></dt>
+<dd>Limit the results. (Optional, default: 100)</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.subscribe_orderbook_generator"><code class="name flex">
+<span>def <span class="ident">subscribe_orderbook_generator</span></span>(<span>self, ws: aiohttp.client_ws.ClientWebSocketResponse, symbol: str, limit: Optional[int] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a orderbook stream subscribtion in a form of a generator.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ws</code></strong></dt>
+<dd>Websocket response object.</dd>
+<dt><strong><code>symbol</code></strong></dt>
+<dd>Market symbol, two tickers joined with a "/". For example "XRG/LTC".</dd>
+<dt><strong><code>limit</code></strong></dt>
+<dd>(Optional) The number of items on each side of the books. Default: 100</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.subscribe_ticker_generator"><code class="name flex">
+<span>def <span class="ident">subscribe_ticker_generator</span></span>(<span>self, ws: aiohttp.client_ws.ClientWebSocketResponse, symbol: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a ticker stream subscribtion in a form of a generator.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ws</code></strong></dt>
+<dd>Websocket response object.</dd>
+<dt><strong><code>symbol</code></strong></dt>
+<dd>Market symbol, two tickers joined with a "/". For example "XRG/LTC".</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.subscribe_trades_generator"><code class="name flex">
+<span>def <span class="ident">subscribe_trades_generator</span></span>(<span>self, ws: aiohttp.client_ws.ClientWebSocketResponse, symbol: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a trades stream subscribtion in a form of a generator.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ws</code></strong></dt>
+<dd>Websocket response object.</dd>
+<dt><strong><code>symbol</code></strong></dt>
+<dd>Market symbol, two tickers joined with a "/". For example "XRG/LTC".</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.unsubscribe_candles"><code class="name flex">
+<span>async def <span class="ident">unsubscribe_candles</span></span>(<span>self, ws: aiohttp.client_ws.ClientWebSocketResponse, symbol: str, period: int)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Unsubscribes the reports stream subscribtion.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ws</code></strong></dt>
+<dd>Websocket response object.</dd>
+<dt><strong><code>period</code></strong></dt>
+<dd>The candlestick period you would like (Minutes). (5, 15, 30, 60, 180, 240, 480, 720, 1440)</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.unsubscribe_orderbook"><code class="name flex">
+<span>async def <span class="ident">unsubscribe_orderbook</span></span>(<span>self, ws: aiohttp.client_ws.ClientWebSocketResponse, symbol: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Unsubscribes the orderbook stream subscribtion.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ws</code></strong></dt>
+<dd>Websocket response object.</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.unsubscribe_ticker"><code class="name flex">
+<span>async def <span class="ident">unsubscribe_ticker</span></span>(<span>self, ws: aiohttp.client_ws.ClientWebSocketResponse, symbol: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Unsubscribes the ticker stream subscribtion.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ws</code></strong></dt>
+<dd>Websocket response object.</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.unsubscribe_trades"><code class="name flex">
+<span>async def <span class="ident">unsubscribe_trades</span></span>(<span>self, ws: aiohttp.client_ws.ClientWebSocketResponse, symbol: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Unsubscribes the trades stream subscribtion.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ws</code></strong></dt>
+<dd>Websocket response object.</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.websocket_context"><code class="name flex">
+<span>def <span class="ident">websocket_context</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets an entry point to a websocket, to be used with <code>async with ... as ws:</code>.</p></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.ws_cancel_order"><code class="name flex">
+<span>async def <span class="ident">ws_cancel_order</span></span>(<span>self, ws: aiohttp.client_ws.ClientWebSocketResponse, order_id: str = None, user_provided_id: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Cancel order through a websocket.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ws</code></strong></dt>
+<dd>Websocket response object.</dd>
+<dt><strong><code>order_id</code></strong></dt>
+<dd>Exchange internal order ID.</dd>
+<dt><strong><code>user_provided_id</code></strong></dt>
+<dd>Optional user-defined ID.</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.ws_create_order"><code class="name flex">
+<span>async def <span class="ident">ws_create_order</span></span>(<span>self, ws: aiohttp.client_ws.ClientWebSocketResponse, symbol: str, side: str, quantity: str, price: Optional[str] = None, order_type: Optional[str] = None, user_provided_id: Optional[str] = None, strict_validate: Optional[bool] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates an order through a websocket.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ws</code></strong></dt>
+<dd>Websocket response object.</dd>
+<dt><strong><code>symbol</code></strong></dt>
+<dd>Market symbol, two tickers joined with a "/". For example "XRG/LTC"</dd>
+<dt><strong><code>side</code></strong></dt>
+<dd>Order side, "sell" or "buy".</dd>
+<dt><strong><code>quantity</code></strong></dt>
+<dd>Quantity of the base asset.</dd>
+<dt><strong><code>price</code></strong></dt>
+<dd>Price in terms of the quote asset required for the limit order.</dd>
+<dt><strong><code>order_type</code></strong></dt>
+<dd>"limit" or "market" ordeer type.</dd>
+<dt><strong><code>user_provided_id</code></strong></dt>
+<dd>Optional user-defined ID.</dd>
+<dt><strong><code>strict_validate</code></strong></dt>
+<dd>Strict validate amount and price precision without truncation. Setting true will return an error if your quantity/price exceeds the correct decimal places. Default false will truncate values to allowed number of decimal places.</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.ws_get"><code class="name flex">
+<span>async def <span class="ident">ws_get</span></span>(<span>self, ws: aiohttp.client_ws.ClientWebSocketResponse, message: dict)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Sends and receives the websocket response or throws a WSException if an error happened.</p></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.ws_get_active_orders"><code class="name flex">
+<span>async def <span class="ident">ws_get_active_orders</span></span>(<span>self, ws: aiohttp.client_ws.ClientWebSocketResponse, symbol: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get active orders through a websocket.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ws</code></strong></dt>
+<dd>Websocket response object.</dd>
+<dt><strong><code>symbol</code></strong></dt>
+<dd>Market symbol, two tickers joined with a "/". For example "XRG/LTC".</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.ws_get_asset"><code class="name flex">
+<span>async def <span class="ident">ws_get_asset</span></span>(<span>self, ws: aiohttp.client_ws.ClientWebSocketResponse, ticker: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get asset trhough a websocket.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ws</code></strong></dt>
+<dd>Websocket response object.</dd>
+<dt><strong><code>ticker</code></strong></dt>
+<dd>Currency symbol, for example "XRG".</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.ws_get_assets_list"><code class="name flex">
+<span>async def <span class="ident">ws_get_assets_list</span></span>(<span>self, ws: aiohttp.client_ws.ClientWebSocketResponse)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get assets list through a websocket.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ws</code></strong></dt>
+<dd>Websocket response object.</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.ws_get_market"><code class="name flex">
+<span>async def <span class="ident">ws_get_market</span></span>(<span>self, ws: aiohttp.client_ws.ClientWebSocketResponse, symbol: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get market info through a websocket.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ws</code></strong></dt>
+<dd>Websocket response object.</dd>
+<dt><strong><code>symbol</code></strong></dt>
+<dd>Market symbol, two tickers joined with a "/". For example "XRG/LTC".</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.ws_get_markets_list"><code class="name flex">
+<span>async def <span class="ident">ws_get_markets_list</span></span>(<span>self, ws: aiohttp.client_ws.ClientWebSocketResponse)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get markets list through a websocket.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ws</code></strong></dt>
+<dd>Websocket response object.</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.ws_get_trade_history"><code class="name flex">
+<span>async def <span class="ident">ws_get_trade_history</span></span>(<span>self, ws: aiohttp.client_ws.ClientWebSocketResponse, symbol: str, limit: Optional[int] = None, offset: Optional[int] = None, sort: Optional[str] = None, history_from: Union[str, datetime.datetime, None] = None, history_till: Union[str, datetime.datetime, None] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get trade history through a websocket.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ws</code></strong></dt>
+<dd>Websocket response object.</dd>
+<dt><strong><code>symbol</code></strong></dt>
+<dd>Market symbol, two tickers joined with a "/". For example "XRG/LTC".</dd>
+<dt><strong><code>limit</code></strong></dt>
+<dd>Number of entries, (Optional, default: 100, max: 1000).</dd>
+<dt><strong><code>offset</code></strong></dt>
+<dd>Offset the results by this number (Optional, default: 0).</dd>
+<dt><strong><code>sort</code></strong></dt>
+<dd>'ASC' for ascending order, 'DESC' for decending order. (Optional, default: DESC)</dd>
+<dt><strong><code>history_from</code></strong></dt>
+<dd>This is earliest datetime. Can be a datetime object or string formatted
+as <code>YYYY-MM-DDTH:MM:SSZ</code> (Optional). When using from or till, then both are required.</dd>
+<dt><strong><code>history_till</code></strong></dt>
+<dd>This is latest datetime. Formatted the same as <code>history_from</code> (Optional).
+When using from or till, then both are required.</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.ws_get_trading_balance"><code class="name flex">
+<span>async def <span class="ident">ws_get_trading_balance</span></span>(<span>self, ws: aiohttp.client_ws.ClientWebSocketResponse)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get trading balance through a websocket.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ws</code></strong></dt>
+<dd>Websocket response object.</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.ws_listener"><code class="name flex">
+<span>async def <span class="ident">ws_listener</span></span>(<span>self, ws: aiohttp.client_ws.ClientWebSocketResponse)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A coroutine that listens on the websocket and dispatches the received messages to the queue.</p></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.ws_login"><code class="name flex">
+<span>async def <span class="ident">ws_login</span></span>(<span>self, ws: aiohttp.client_ws.ClientWebSocketResponse)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Executes a login on the websocket.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ws</code></strong></dt>
+<dd>Websocket response object.</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.ws_stream_generator"><code class="name flex">
+<span>async def <span class="ident">ws_stream_generator</span></span>(<span>self, ws: aiohttp.client_ws.ClientWebSocketResponse, stream, **params)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a stream subscribtion in a form of a generator.</p>
+<p>The generator is meant to be iterated over with <code>async for</code> or <code>anext</code> builtin.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ws</code></strong></dt>
+<dd>Websocket response object.</dd>
+<dt><strong><code>message</code></strong></dt>
+<dd>Stream subsctiption message.</dd>
+<dt><strong><code>response_methods</code></strong></dt>
+<dd>The list of "method" keys returned from as the stream response.
+Allows you to drop some parts of the communication, like the initial snapshot.</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.ws_subscribe_reports_generator"><code class="name flex">
+<span>def <span class="ident">ws_subscribe_reports_generator</span></span>(<span>self, ws: aiohttp.client_ws.ClientWebSocketResponse)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a reports stream subscribtion in a form of a generator.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ws</code></strong></dt>
+<dd>Websocket response object.</dd>
+</dl></div>
+</dd>
+<dt id="nonkyc.NonKYCClient.ws_unsubscribe_reports"><code class="name flex">
+<span>async def <span class="ident">ws_unsubscribe_reports</span></span>(<span>self, ws: aiohttp.client_ws.ClientWebSocketResponse)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Unsubscribes the reports stream subscribtion.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ws</code></strong></dt>
+<dd>Websocket response object.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="nonkyc.pop_none" href="#nonkyc.pop_none">pop_none</a></code></li>
+<li><code><a title="nonkyc.private" href="#nonkyc.private">private</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="nonkyc.Auth" href="#nonkyc.Auth">Auth</a></code></h4>
+<ul class="">
+<li><code><a title="nonkyc.Auth.headers" href="#nonkyc.Auth.headers">headers</a></code></li>
+<li><code><a title="nonkyc.Auth.sign" href="#nonkyc.Auth.sign">sign</a></code></li>
+<li><code><a title="nonkyc.Auth.ws_auth_message" href="#nonkyc.Auth.ws_auth_message">ws_auth_message</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="nonkyc.WSException" href="#nonkyc.WSException">WSException</a></code></h4>
+</li>
+<li>
+<h4><code><a title="nonkyc.WSListenerContext" href="#nonkyc.WSListenerContext">WSListenerContext</a></code></h4>
+</li>
+<li>
+<h4><code><a title="nonkyc.NonKYCClient" href="#nonkyc.NonKYCClient">NonKYCClient</a></code></h4>
+<ul class="">
+<li><code><a title="nonkyc.NonKYCClient.cancel_market_orders" href="#nonkyc.NonKYCClient.cancel_market_orders">cancel_market_orders</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.cancel_order" href="#nonkyc.NonKYCClient.cancel_order">cancel_order</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.close" href="#nonkyc.NonKYCClient.close">close</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.combine_streams" href="#nonkyc.NonKYCClient.combine_streams">combine_streams</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.create_order" href="#nonkyc.NonKYCClient.create_order">create_order</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.create_withdrawal" href="#nonkyc.NonKYCClient.create_withdrawal">create_withdrawal</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.get" href="#nonkyc.NonKYCClient.get">get</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.get_asset_by_id" href="#nonkyc.NonKYCClient.get_asset_by_id">get_asset_by_id</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.get_assets" href="#nonkyc.NonKYCClient.get_assets">get_assets</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.get_balances" href="#nonkyc.NonKYCClient.get_balances">get_balances</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.get_deposit_address" href="#nonkyc.NonKYCClient.get_deposit_address">get_deposit_address</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.get_deposits" href="#nonkyc.NonKYCClient.get_deposits">get_deposits</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.get_market_by_id" href="#nonkyc.NonKYCClient.get_market_by_id">get_market_by_id</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.get_market_by_symbol" href="#nonkyc.NonKYCClient.get_market_by_symbol">get_market_by_symbol</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.get_markets" href="#nonkyc.NonKYCClient.get_markets">get_markets</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.get_my_orders" href="#nonkyc.NonKYCClient.get_my_orders">get_my_orders</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.get_nonzero_balances" href="#nonkyc.NonKYCClient.get_nonzero_balances">get_nonzero_balances</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.get_order" href="#nonkyc.NonKYCClient.get_order">get_order</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.get_orderbook_by_market_id" href="#nonkyc.NonKYCClient.get_orderbook_by_market_id">get_orderbook_by_market_id</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.get_orderbook_by_symbol" href="#nonkyc.NonKYCClient.get_orderbook_by_symbol">get_orderbook_by_symbol</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.get_pool_by_id" href="#nonkyc.NonKYCClient.get_pool_by_id">get_pool_by_id</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.get_pool_by_symbol" href="#nonkyc.NonKYCClient.get_pool_by_symbol">get_pool_by_symbol</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.get_pool_trades" href="#nonkyc.NonKYCClient.get_pool_trades">get_pool_trades</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.get_pool_trades_since" href="#nonkyc.NonKYCClient.get_pool_trades_since">get_pool_trades_since</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.get_pools" href="#nonkyc.NonKYCClient.get_pools">get_pools</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.get_trades" href="#nonkyc.NonKYCClient.get_trades">get_trades</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.get_trades_since" href="#nonkyc.NonKYCClient.get_trades_since">get_trades_since</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.get_withdrawals" href="#nonkyc.NonKYCClient.get_withdrawals">get_withdrawals</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.post" href="#nonkyc.NonKYCClient.post">post</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.subscribe_candles_generator" href="#nonkyc.NonKYCClient.subscribe_candles_generator">subscribe_candles_generator</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.subscribe_orderbook_generator" href="#nonkyc.NonKYCClient.subscribe_orderbook_generator">subscribe_orderbook_generator</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.subscribe_ticker_generator" href="#nonkyc.NonKYCClient.subscribe_ticker_generator">subscribe_ticker_generator</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.subscribe_trades_generator" href="#nonkyc.NonKYCClient.subscribe_trades_generator">subscribe_trades_generator</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.unsubscribe_candles" href="#nonkyc.NonKYCClient.unsubscribe_candles">unsubscribe_candles</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.unsubscribe_orderbook" href="#nonkyc.NonKYCClient.unsubscribe_orderbook">unsubscribe_orderbook</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.unsubscribe_ticker" href="#nonkyc.NonKYCClient.unsubscribe_ticker">unsubscribe_ticker</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.unsubscribe_trades" href="#nonkyc.NonKYCClient.unsubscribe_trades">unsubscribe_trades</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.websocket_context" href="#nonkyc.NonKYCClient.websocket_context">websocket_context</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.ws_cancel_order" href="#nonkyc.NonKYCClient.ws_cancel_order">ws_cancel_order</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.ws_create_order" href="#nonkyc.NonKYCClient.ws_create_order">ws_create_order</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.ws_get" href="#nonkyc.NonKYCClient.ws_get">ws_get</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.ws_get_active_orders" href="#nonkyc.NonKYCClient.ws_get_active_orders">ws_get_active_orders</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.ws_get_asset" href="#nonkyc.NonKYCClient.ws_get_asset">ws_get_asset</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.ws_get_assets_list" href="#nonkyc.NonKYCClient.ws_get_assets_list">ws_get_assets_list</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.ws_get_market" href="#nonkyc.NonKYCClient.ws_get_market">ws_get_market</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.ws_get_markets_list" href="#nonkyc.NonKYCClient.ws_get_markets_list">ws_get_markets_list</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.ws_get_trade_history" href="#nonkyc.NonKYCClient.ws_get_trade_history">ws_get_trade_history</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.ws_get_trading_balance" href="#nonkyc.NonKYCClient.ws_get_trading_balance">ws_get_trading_balance</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.ws_listener" href="#nonkyc.NonKYCClient.ws_listener">ws_listener</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.ws_login" href="#nonkyc.NonKYCClient.ws_login">ws_login</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.ws_stream_generator" href="#nonkyc.NonKYCClient.ws_stream_generator">ws_stream_generator</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.ws_subscribe_reports_generator" href="#nonkyc.NonKYCClient.ws_subscribe_reports_generator">ws_subscribe_reports_generator</a></code></li>
+<li><code><a title="nonkyc.NonKYCClient.ws_unsubscribe_reports" href="#nonkyc.NonKYCClient.ws_unsubscribe_reports">ws_unsubscribe_reports</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
