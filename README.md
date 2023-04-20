@@ -19,7 +19,7 @@ nonkyc_settings.json format:
 >>> x = NonKYCClient()
 >>> await x.get_assets()
 ```
-### Using private methods,  ([xeggegs_settings.json](#settings) required)
+### Using private methods,  ([nonkyc_settings.json](#settings) required)
 ```
 >>> from nonkyc import NonKYCClient
 >>> x = NonKYCClient()
@@ -37,7 +37,7 @@ nonkyc_settings.json format:
 >>> await main()
 ```
 
-### Websocket private subscriptions,  ([xeggegs_settings.json](#settings) required):
+### Websocket private subscriptions,  ([nonkycs_settings.json](#settings) required):
 ```
 >>> from nonkyc import NonKYCClient
 >>> x = NonKYCClient()
@@ -58,7 +58,7 @@ nonkyc_settings.json format:
 ...     data = await x.ws_get_asset(ws, 'XRG')
 
 ```
-### Websocket private metods,  ([xeggegs_settings.json](#settings) required)
+### Websocket private metods,  ([nonkycs_settings.json](#settings) required)
 ```
 >>> from nonkyc import NonKYCClient
 >>> x = NonKYCClient()
