@@ -136,8 +136,8 @@ class NonKYCClient():
             self.auth = Auth(settings['access_key'], settings['secret_key'])
         except (FileNotFoundError, KeyError) as ex:
             self.auth = None
-        self.endpoint = "https://nonkyc.io/api/v2"
-        self.ws_endpoint = 'wss://ws.nonkyc.io'
+        self.endpoint = "https://api.nonkyc.io/api/v2"
+        self.ws_endpoint = 'wss://api.nonkyc.io'
         self.ws_responses = defaultdict(Queue)
         self.session = aiohttp.ClientSession()
         self.sending_event = asyncio.Event()
